@@ -3,12 +3,12 @@
   "playercontrolpp.gui.tab.hotkeys": "Hotkeys",
   "playercontrolpp.gui.tab.settings": "Settings",
 
-  "playercontrolpp.hotkey.auto_forward.name": "Auto Forward",
-  "playercontrolpp.hotkey.auto_forward.comment": "Toggle auto forward movement. When enabled, the player will continuously move forward.",
+  "playercontrolpp.config.hotkeys.pretty_name.autoForward": "Auto Forward",
+  "playercontrolpp.config.hotkeys.comment.autoForward": "Toggle auto forward movement. When enabled, the player will continuously move forward.",
 
-  "playercontrolpp.hotkey.quick_turn.name": "Quick Turn",
-  "playercontrolpp.hotkey.quick_turn.comment": "Quick turn by the configured angle. Instant rotational snap.",
+  "playercontrolpp.config.hotkeys.pretty_name.quickTurn": "Quick Turn",
+  "playercontrolpp.config.hotkeys.comment.quickTurn": "Quick turn by the configured angle. Instant rotational snap.",
 
-  "playercontrolpp.setting.turn_angle.name": "Turn Angle",
-  "playercontrolpp.setting.turn_angle.comment": "Turn angle in degrees for Quick Turn. Common values: 90, 180, 270."
+  "playercontrolpp.config.settings.pretty_name.turnAngle": "Turn Angle",
+  "playercontrolpp.config.settings.comment.turnAngle": "Turn angle in degrees for Quick Turn. Common values: 90, 180, 270."
 }

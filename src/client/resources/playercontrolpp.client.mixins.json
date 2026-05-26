@@ -4,6 +4,7 @@
   "package": "com.alonediamond.playercontrolpp.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
+    "MixinClientPlayerEntity"
   ],
   "injectors": {
     "defaultRequire": 1
