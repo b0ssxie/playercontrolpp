@@ -3,6 +3,7 @@ package com.alonediamond.playercontrolpp.config;
 import com.alonediamond.playercontrolpp.event.ClientEventHandler;
 import com.alonediamond.playercontrolpp.input.KeybindCallbacks;
 import com.alonediamond.playercontrolpp.input.KeybindProvider;
+import com.alonediamond.playercontrolpp.route.RouteManager;
 import fi.dy.masa.malilib.config.ConfigManager;
 import fi.dy.masa.malilib.event.InitializationHandler;
 import fi.dy.masa.malilib.event.InputEventHandler;
@@ -19,6 +20,8 @@ public class InitHandler implements IInitializationHandler {
         KeybindCallbacks.register();
         ClientEventHandler.register();
         Configs.loadFromFile();
+        RouteManager.getInstance().loadRoutes();
+        RouteManager.getInstance().registerAllKeybinds();
     }
 
     public static void register() {

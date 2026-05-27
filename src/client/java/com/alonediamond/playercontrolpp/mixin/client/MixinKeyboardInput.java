@@ -1,6 +1,7 @@
 package com.alonediamond.playercontrolpp.mixin.client;
 
 import com.alonediamond.playercontrolpp.feature.AutoForwardFeature;
+import com.alonediamond.playercontrolpp.route.RouteFlowRuntime;
 import net.minecraft.client.input.Input;
 import net.minecraft.client.input.KeyboardInput;
 import net.minecraft.util.PlayerInput;
@@ -14,7 +15,10 @@ public abstract class MixinKeyboardInput {
 
     @Inject(method = "tick", at = @At("TAIL"))
     private void playercontrolpp$afterTick(CallbackInfo ci) {
-        if (!AutoForwardFeature.isEnabled()) {
+        boolean autoForward = AutoForwardFeature.isEnabled();
+        boolean routeForward = RouteFlowRuntime.getInstance().isForwardActive();
+
+        if (!autoForward && !routeForward) {
             return;
         }
 

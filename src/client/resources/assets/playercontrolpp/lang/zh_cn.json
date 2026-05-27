@@ -17,5 +17,30 @@
 
   "playercontrolpp.message.auto_forward.on": "[PlayerControl++] 自动前进：开",
   "playercontrolpp.message.auto_forward.off": "[PlayerControl++] 自动前进：关",
-  "playercontrolpp.message.auto_forward.world_change": "[PlayerControl++] 自动前进：关（世界切换）"
+  "playercontrolpp.message.auto_forward.world_change": "[PlayerControl++] 自动前进：关（世界切换）",
+
+  "playercontrolpp.gui.tab.routes": "路径",
+  "playercontrolpp.gui.route.title": "路径流系统",
+  "playercontrolpp.gui.route.add": "+ 添加路径",
+  "playercontrolpp.gui.route.remove": "删除",
+  "playercontrolpp.gui.route.back": "返回",
+  "playercontrolpp.gui.route.new_route": "新路径",
+  "playercontrolpp.gui.route.name": "名称",
+  "playercontrolpp.gui.route.start_pos": "起点坐标",
+  "playercontrolpp.gui.route.end_pos": "终点坐标",
+  "playercontrolpp.gui.route.arrival_radius": "到达半径",
+  "playercontrolpp.gui.route.loop_count": "循环次数",
+  "playercontrolpp.gui.route.set_start": "设为起点",
+  "playercontrolpp.gui.route.set_end": "设为终点",
+
+  "playercontrolpp.config.hotkeys.name.openRouteGui": "打开路径界面",
+  "playercontrolpp.config.hotkeys.pretty_name.openRouteGui": "打开路径界面",
+  "playercontrolpp.config.hotkeys.comment.openRouteGui": "打开路径流系统配置界面。",
+
+  "playercontrolpp.message.route.started": "[PlayerControl++] 路径已启动",
+  "playercontrolpp.message.route.stopped": "[PlayerControl++] 路径已停止",
+  "playercontrolpp.message.route.completed": "[PlayerControl++] 路径已完成",
+  "playercontrolpp.message.route.failed": "[PlayerControl++] 路径失败（卡住）",
+  "playercontrolpp.message.route.world_change": "[PlayerControl++] 路径已停止（世界切换）",
+  "playercontrolpp.message.route.death": "[PlayerControl++] 路径已停止（玩家死亡）"
 }

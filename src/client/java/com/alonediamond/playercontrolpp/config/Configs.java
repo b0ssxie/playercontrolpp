@@ -33,11 +33,16 @@ public class Configs implements IConfigHandler {
                 KeybindSettings.PRESS_ALLOWEXTRA)
                 .apply("playercontrolpp.config.hotkeys");
 
+        public static final ConfigHotkey OPEN_ROUTE_GUI = new ConfigHotkey(
+                "openRouteGui", "",
+                KeybindSettings.PRESS_ALLOWEXTRA)
+                .apply("playercontrolpp.config.hotkeys");
+
         public static final ImmutableList<IConfigBase> OPTIONS = ImmutableList.of(
-                AUTO_FORWARD, QUICK_TURN);
+                AUTO_FORWARD, QUICK_TURN, OPEN_ROUTE_GUI);
 
         public static final List<IHotkey> HOTKEY_LIST = ImmutableList.of(
-                AUTO_FORWARD, QUICK_TURN);
+                AUTO_FORWARD, QUICK_TURN, OPEN_ROUTE_GUI);
     }
 
     public static class Settings {

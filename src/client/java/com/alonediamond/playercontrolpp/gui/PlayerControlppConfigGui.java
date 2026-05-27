@@ -1,14 +1,17 @@
 package com.alonediamond.playercontrolpp.gui;
 
 import com.alonediamond.playercontrolpp.config.Configs;
+import com.alonediamond.playercontrolpp.route.RouteManager;
 import fi.dy.masa.malilib.gui.GuiConfigsBase;
 import fi.dy.masa.malilib.gui.GuiConfigsBase.ConfigOptionWrapper;
 import fi.dy.masa.malilib.gui.button.ButtonBase;
 import fi.dy.masa.malilib.gui.button.ButtonGeneric;
 import fi.dy.masa.malilib.gui.button.IButtonActionListener;
 import fi.dy.masa.malilib.util.StringUtils;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -42,9 +45,15 @@ public class PlayerControlppConfigGui extends GuiConfigsBase {
     public List<ConfigOptionWrapper> getConfigs() {
         switch (selectedTab) {
             case HOTKEYS:
-                return ConfigOptionWrapper.createFor(Configs.Hotkeys.HOTKEY_LIST);
+                List<ConfigOptionWrapper> hotkeys = new ArrayList<>();
+                hotkeys.addAll(ConfigOptionWrapper.createFor(Configs.Hotkeys.HOTKEY_LIST));
+                hotkeys.addAll(ConfigOptionWrapper.createFor(RouteManager.getInstance().getRouteHotkeyList()));
+                return hotkeys;
             case SETTINGS:
                 return ConfigOptionWrapper.createFor(Configs.Settings.OPTIONS);
+            case ROUTES:
+                MinecraftClient.getInstance().setScreen(new RouteListGui(this));
+                return Collections.emptyList();
         }
         return Collections.emptyList();
     }
@@ -56,7 +65,8 @@ public class PlayerControlppConfigGui extends GuiConfigsBase {
 
     public enum ConfigGuiTab {
         HOTKEYS("playercontrolpp.gui.tab.hotkeys"),
-        SETTINGS("playercontrolpp.gui.tab.settings");
+        SETTINGS("playercontrolpp.gui.tab.settings"),
+        ROUTES("playercontrolpp.gui.tab.routes");
 
         private final String translationKey;
 

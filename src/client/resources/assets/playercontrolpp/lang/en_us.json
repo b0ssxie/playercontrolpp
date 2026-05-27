@@ -17,5 +17,30 @@
 
   "playercontrolpp.message.auto_forward.on": "[PlayerControl++] Auto Forward: ON",
   "playercontrolpp.message.auto_forward.off": "[PlayerControl++] Auto Forward: OFF",
-  "playercontrolpp.message.auto_forward.world_change": "[PlayerControl++] Auto Forward: OFF (world changed)"
+  "playercontrolpp.message.auto_forward.world_change": "[PlayerControl++] Auto Forward: OFF (world changed)",
+
+  "playercontrolpp.gui.tab.routes": "Routes",
+  "playercontrolpp.gui.route.title": "Route Flow System",
+  "playercontrolpp.gui.route.add": "+ Add Route",
+  "playercontrolpp.gui.route.remove": "Remove",
+  "playercontrolpp.gui.route.back": "Back",
+  "playercontrolpp.gui.route.new_route": "New Route",
+  "playercontrolpp.gui.route.name": "Name",
+  "playercontrolpp.gui.route.start_pos": "Start Position",
+  "playercontrolpp.gui.route.end_pos": "End Position",
+  "playercontrolpp.gui.route.arrival_radius": "Arrival Radius",
+  "playercontrolpp.gui.route.loop_count": "Loop Count",
+  "playercontrolpp.gui.route.set_start": "Set Start",
+  "playercontrolpp.gui.route.set_end": "Set End",
+
+  "playercontrolpp.config.hotkeys.name.openRouteGui": "Open Route GUI",
+  "playercontrolpp.config.hotkeys.pretty_name.openRouteGui": "Open Route GUI",
+  "playercontrolpp.config.hotkeys.comment.openRouteGui": "Open the Route Flow System configuration GUI.",
+
+  "playercontrolpp.message.route.started": "[PlayerControl++] Route Started",
+  "playercontrolpp.message.route.stopped": "[PlayerControl++] Route Stopped",
+  "playercontrolpp.message.route.completed": "[PlayerControl++] Route Completed",
+  "playercontrolpp.message.route.failed": "[PlayerControl++] Route Failed (Stuck)",
+  "playercontrolpp.message.route.world_change": "[PlayerControl++] Route Stopped (world changed)",
+  "playercontrolpp.message.route.death": "[PlayerControl++] Route Stopped (player died)"
 }
