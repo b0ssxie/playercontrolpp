@@ -21,6 +21,8 @@ public class Route {
     private double arrivalRadius;
     private int loopCount;
     private int layerIncrement;
+    private boolean sprintEnabled;
+    private boolean layerControlEnabled;
     private ConfigHotkey hotkey;
 
     public Route(String name) {
@@ -43,6 +45,8 @@ public class Route {
         this.arrivalRadius = 1.0;
         this.loopCount = 1;
         this.layerIncrement = 1;
+        this.sprintEnabled = false;
+        this.layerControlEnabled = false;
         this.hotkey = new ConfigHotkey("route_" + this.id, "",
                 KeybindSettings.PRESS_ALLOWEXTRA,
                 "Hotkey for route: " + name,
@@ -94,6 +98,12 @@ public class Route {
     public int getLayerIncrement() { return layerIncrement; }
     public void setLayerIncrement(int layerIncrement) { this.layerIncrement = layerIncrement == 0 ? 1 : layerIncrement; }
 
+    public boolean isSprintEnabled() { return sprintEnabled; }
+    public void setSprintEnabled(boolean v) { sprintEnabled = v; }
+
+    public boolean isLayerControlEnabled() { return layerControlEnabled; }
+    public void setLayerControlEnabled(boolean v) { layerControlEnabled = v; }
+
     public ConfigHotkey getHotkey() { return hotkey; }
 
     /**
@@ -119,6 +129,8 @@ public class Route {
         obj.addProperty("arrivalRadius", arrivalRadius);
         obj.addProperty("loopCount", loopCount);
         obj.addProperty("layerIncrement", layerIncrement);
+        obj.addProperty("sprintEnabled", sprintEnabled);
+        obj.addProperty("layerControlEnabled", layerControlEnabled);
 
         JsonArray nodesArr = new JsonArray();
         for (RouteNode node : nodes) {
@@ -141,6 +153,8 @@ public class Route {
         if (obj.has("arrivalRadius")) route.setArrivalRadius(obj.get("arrivalRadius").getAsDouble());
         if (obj.has("loopCount")) route.setLoopCount(obj.get("loopCount").getAsInt());
         if (obj.has("layerIncrement")) route.setLayerIncrement(obj.get("layerIncrement").getAsInt());
+        if (obj.has("sprintEnabled")) route.setSprintEnabled(obj.get("sprintEnabled").getAsBoolean());
+        if (obj.has("layerControlEnabled")) route.setLayerControlEnabled(obj.get("layerControlEnabled").getAsBoolean());
 
         if (obj.has("nodes")) {
             JsonArray nodesArr = obj.getAsJsonArray("nodes");

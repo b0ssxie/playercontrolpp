@@ -43,6 +43,7 @@
 
   "playercontrolpp.message.recording.started": "[PlayerControl++] Recording Started",
   "playercontrolpp.message.recording.stopped": "[PlayerControl++] Recording Stopped",
+  "playercontrolpp.message.recording.active": "[PlayerControl++] ... Recording ...",
   "playercontrolpp.message.playback.started": "[PlayerControl++] Playback Started",
   "playercontrolpp.message.playback.stopped": "[PlayerControl++] Playback Stopped",
   "playercontrolpp.message.playback.completed": "[PlayerControl++] Playback Completed",

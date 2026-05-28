@@ -161,10 +161,11 @@ public class RouteListGui extends Screen {
 
     private void refreshFieldValues() {
         boolean hasSel = selectedRoute != null;
+        boolean showLayer = hasSel && selectedRoute.isLayerControlEnabled();
         nameField.setEditable(hasSel);
         radiusField.setEditable(hasSel);
         loopField.setEditable(hasSel);
-        layerIncField.setEditable(hasSel);
+        layerIncField.setEditable(showLayer);
 
         if (hasSel) {
             nameField.setText(selectedRoute.getName());
@@ -342,13 +343,36 @@ public class RouteListGui extends Screen {
         loopField.render(context, mouseX, mouseY, delta);
         ry += 24;
 
-        // Settings row 2: layer increment
-        context.drawTextWithShadow(textRenderer,
-                Text.of(StringUtils.translate("playercontrolpp.gui.route.layer_increment") + ":"),
-                RIGHT_X, ry + 4, 0xFFFFFFFF);
-        layerIncField.setX(FIELD_X);
-        layerIncField.setY(ry + 2);
-        layerIncField.render(context, mouseX, mouseY, delta);
+        // Settings row 2: layer increment (only shown when LayerCtrl is ON)
+        if (selectedRoute.isLayerControlEnabled()) {
+            context.drawTextWithShadow(textRenderer,
+                    Text.of(StringUtils.translate("playercontrolpp.gui.route.layer_increment") + ":"),
+                    RIGHT_X, ry + 4, 0xFFFFFFFF);
+            layerIncField.setX(FIELD_X);
+            layerIncField.setY(ry + 2);
+            layerIncField.render(context, mouseX, mouseY, delta);
+            ry += 24;
+        }
+
+        // Settings row 3: Sprint + LayerCtrl toggles
+        int toggleY = ry + 4;
+
+        String sprintLabel = selectedRoute.isSprintEnabled()
+                ? "[Sprint: ON]" : "[Sprint: OFF]";
+        int sprintW = textRenderer.getWidth(sprintLabel);
+        int sprintColor = selectedRoute.isSprintEnabled() ? 0xFF55FF55 : 0xFF888888;
+        context.drawTextWithShadow(textRenderer, Text.of(sprintLabel), RIGHT_X, toggleY, sprintColor);
+
+        String lcLabel = selectedRoute.isLayerControlEnabled()
+                ? "[LayerCtrl: ON]" : "[LayerCtrl: OFF]";
+        int lcW = textRenderer.getWidth(lcLabel);
+        int lcX = RIGHT_X + sprintW + 20;
+        int lcColor = selectedRoute.isLayerControlEnabled() ? 0xFF55FF55 : 0xFF888888;
+        context.drawTextWithShadow(textRenderer, Text.of(lcLabel), lcX, toggleY, lcColor);
+
+        // Record toggle hit areas
+        wptHitAreas.add(new WptHitArea(ry, RIGHT_X, sprintW, lcX, lcW, -2));
+
         ry += 24;
 
         if (!selectedRoute.getDimensionId().isEmpty()) {
@@ -379,6 +403,23 @@ public class RouteListGui extends Screen {
 
         if (selectedRoute != null) {
             for (WptHitArea area : wptHitAreas) {
+                // Sprint / LayerCtrl toggles (nodeIndex == -2)
+                if (area.nodeIndex == -2) {
+                    if (mouseX >= area.setBtnX && mouseX <= area.setBtnX + area.setBtnW
+                            && mouseY >= area.y && mouseY <= area.y + WPT_ROW_H) {
+                        selectedRoute.setSprintEnabled(!selectedRoute.isSprintEnabled());
+                        dirty = true;
+                        return true;
+                    }
+                    if (area.xBtnW > 0 && mouseX >= area.xBtnX && mouseX <= area.xBtnX + area.xBtnW
+                            && mouseY >= area.y && mouseY <= area.y + WPT_ROW_H) {
+                        selectedRoute.setLayerControlEnabled(!selectedRoute.isLayerControlEnabled());
+                        dirty = true;
+                        refreshFieldValues();
+                        return true;
+                    }
+                    continue;
+                }
                 if (area.isAddButton) {
                     if (mouseX >= area.setBtnX && mouseX <= area.setBtnX + area.setBtnW
                             && mouseY >= area.y - 2 && mouseY <= area.y + 14) {

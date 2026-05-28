@@ -6,35 +6,32 @@ import net.minecraft.text.Text;
 
 /**
  * Litematica integration via reflection.
- * Directly manipulates single-layer value for reliability.
+ * Calls moveLayer() exactly as Litematica's PageUp/PageDown hotkeys do.
  */
 public class LitematicaIntegration {
 
-    private static boolean enabled = true;
     private static boolean showActionBar = true;
-
-    public static boolean isEnabled() { return enabled; }
-    public static void setEnabled(boolean enabled) { LitematicaIntegration.enabled = enabled; }
 
     public static boolean isShowActionBar() { return showActionBar; }
     public static void setShowActionBar(boolean show) { showActionBar = show; }
 
     public static boolean incrementLayer(int amount) {
-        if (!enabled || amount == 0) return false;
+        if (amount == 0) return false;
 
         try {
+            // DataManager.getRenderLayerRange()
             Class<?> dmClass = Class.forName("fi.dy.masa.litematica.data.DataManager");
             Object range = dmClass.getMethod("getRenderLayerRange").invoke(null);
             if (range == null) return false;
 
-            // Ensure SINGLE_LAYER mode
+            // Only SINGLE_LAYER mode
             Object mode = range.getClass().getMethod("getLayerMode").invoke(range);
-            String modeName = ((Enum<?>) mode).name();
-            if (!"SINGLE_LAYER".equals(modeName)) return false;
+            if (!"SINGLE_LAYER".equals(((Enum<?>) mode).name())) return false;
 
-            // Directly get/set layerSingle for reliability
-            int current = (Integer) range.getClass().getMethod("getLayerSingle").invoke(range);
-            range.getClass().getMethod("setLayerSingle", int.class).invoke(range, current + amount);
+            // range.moveLayer(amount) — exactly what PageUp/PageDown triggers
+            boolean ok = (Boolean) range.getClass()
+                    .getMethod("moveLayer", int.class).invoke(range, amount);
+            if (!ok) return false;
 
             if (showActionBar) {
                 MinecraftClient client = MinecraftClient.getInstance();
@@ -47,15 +44,6 @@ public class LitematicaIntegration {
             }
             return true;
         } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public static boolean isAvailable() {
-        try {
-            Class.forName("fi.dy.masa.litematica.data.DataManager");
-            return true;
-        } catch (ClassNotFoundException e) {
             return false;
         }
     }

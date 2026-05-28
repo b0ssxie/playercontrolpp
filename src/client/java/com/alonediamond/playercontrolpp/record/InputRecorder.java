@@ -17,6 +17,8 @@ public class InputRecorder {
     private float startYaw, startPitch;
     private String dimension;
     private String recordingName;
+    private int tickCounter;       // for low-precision frame skipping
+    private int frameSkip;         // 1 = every tick (HP), 3 = every 3rd tick (normal)
 
     public boolean isRecording() { return recording; }
     public boolean isHighPrecision() { return highPrecision; }
@@ -28,6 +30,8 @@ public class InputRecorder {
 
         this.recordingName = name;
         this.highPrecision = highPrecision;
+        this.frameSkip = highPrecision ? 1 : 3; // HP: every tick, normal: every 3rd
+        this.tickCounter = 0;
         this.frames.clear();
         this.startX = player.getX();
         this.startY = player.getY();
@@ -62,6 +66,15 @@ public class InputRecorder {
 
     public void tick(MinecraftClient client) {
         if (!recording) return;
+
+        // Persistent action bar during recording
+        if (tickCounter % 40 == 0) { // refresh every ~2 seconds
+            MessageUtil.sendActionBar(client, "playercontrolpp.message.recording.active");
+        }
+
+        // Frame skipping for low-precision mode
+        tickCounter++;
+        if (!highPrecision && tickCounter % frameSkip != 0) return;
 
         ClientPlayerEntity player = client.player;
         if (player == null || player.input == null) return;

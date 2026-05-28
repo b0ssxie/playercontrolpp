@@ -109,9 +109,11 @@ public class RouteFlowRuntime {
             switch (executor.getState()) {
                 case COMPLETED:
                     MessageUtil.sendActionBar(client, "playercontrolpp.message.route.completed");
-                    // Auto-increment Litematica render layer using route's per-route setting
-                    LitematicaIntegration.incrementLayer(
-                            executor.getRoute().getLayerIncrement());
+                    // Only increment Litematica layer if route has layer control enabled
+                    if (executor.getRoute().isLayerControlEnabled()) {
+                        LitematicaIntegration.incrementLayer(
+                                executor.getRoute().getLayerIncrement());
+                    }
                     toRemove.add(entry.getKey());
                     break;
                 case FAILED:
@@ -131,13 +133,18 @@ public class RouteFlowRuntime {
         }
         updateForwardState();
 
-        // Handle jump requests
+        // Handle jump requests + sprint
+        boolean sprintRequested = false;
         for (RouteExecutor executor : executors.values()) {
             if (executor.needsJump() && player != null) {
                 player.jump();
                 executor.clearJump();
             }
+            if (executor.isActive() && executor.getRoute().isSprintEnabled()) {
+                sprintRequested = true;
+            }
         }
+        client.options.sprintKey.setPressed(sprintRequested);
     }
 
     private void updateForwardState() {
