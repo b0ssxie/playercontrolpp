@@ -1,6 +1,7 @@
 package com.alonediamond.playercontrolpp.event;
 
 import com.alonediamond.playercontrolpp.feature.AutoForwardFeature;
+import com.alonediamond.playercontrolpp.feature.AutoMaterialGatherer;
 import com.alonediamond.playercontrolpp.record.RecordingManager;
 import com.alonediamond.playercontrolpp.record.InputPlayer;
 import com.alonediamond.playercontrolpp.route.RouteFlowRuntime;
@@ -23,6 +24,7 @@ public class ClientEventHandler {
         public void onWorldLoadPre(ClientWorld world1, ClientWorld world2, MinecraftClient client) {
             AutoForwardFeature.onWorldChange();
             RouteFlowRuntime.getInstance().onWorldChange();
+            AutoMaterialGatherer.getInstance().onWorldChange();
         }
     }
 
@@ -31,6 +33,7 @@ public class ClientEventHandler {
         public void onClientTick(MinecraftClient mc) {
             RouteFlowRuntime.getInstance().onClientTick(mc);
             RecordingManager.getInstance().onClientTick(mc);
+            AutoMaterialGatherer.getInstance().tick(mc);
             // Apply playback yaw after input processing
             if (RecordingManager.getInstance().getPlayer().isPlaying()) {
                 RecordingManager.getInstance().getPlayer().applyYaw(mc);

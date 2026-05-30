@@ -6,8 +6,10 @@ import com.google.gson.JsonObject;
 import fi.dy.masa.malilib.config.ConfigUtils;
 import fi.dy.masa.malilib.config.IConfigBase;
 import fi.dy.masa.malilib.config.IConfigHandler;
+import fi.dy.masa.malilib.config.options.ConfigBoolean;
 import fi.dy.masa.malilib.config.options.ConfigHotkey;
 import fi.dy.masa.malilib.config.options.ConfigInteger;
+import fi.dy.masa.malilib.config.options.ConfigStringList;
 import fi.dy.masa.malilib.hotkeys.IHotkey;
 import fi.dy.masa.malilib.hotkeys.KeybindSettings;
 import fi.dy.masa.malilib.util.FileUtils;
@@ -43,11 +45,16 @@ public class Configs implements IConfigHandler {
                 KeybindSettings.PRESS_ALLOWEXTRA)
                 .apply("playercontrolpp.config.hotkeys");
 
+        public static final ConfigHotkey BARITONE_AUTO_GATHER = new ConfigHotkey(
+                "baritoneAutoGather", "",
+                KeybindSettings.PRESS_ALLOWEXTRA)
+                .apply("playercontrolpp.config.hotkeys");
+
         public static final ImmutableList<IConfigBase> OPTIONS = ImmutableList.of(
-                OPEN_CONFIG_GUI, AUTO_FORWARD, QUICK_TURN, RECORDING_TOGGLE);
+                OPEN_CONFIG_GUI, AUTO_FORWARD, QUICK_TURN, RECORDING_TOGGLE, BARITONE_AUTO_GATHER);
 
         public static final List<IHotkey> HOTKEY_LIST = ImmutableList.of(
-                OPEN_CONFIG_GUI, AUTO_FORWARD, QUICK_TURN, RECORDING_TOGGLE);
+                OPEN_CONFIG_GUI, AUTO_FORWARD, QUICK_TURN, RECORDING_TOGGLE, BARITONE_AUTO_GATHER);
     }
 
     public static class Settings {
@@ -59,6 +66,21 @@ public class Configs implements IConfigHandler {
                 TURN_ANGLE);
     }
 
+    public static class BaritoneSettings {
+        public static final ConfigBoolean ENABLE_GLOBAL_IGNORE = new ConfigBoolean(
+                "enableGlobalIgnore", false,
+                "When enabled, items in the Global Ignore List will be skipped during auto-gathering.")
+                .apply("playercontrolpp.config.baritone");
+
+        public static final ConfigStringList GLOBAL_IGNORE_LIST = new ConfigStringList(
+                "globalIgnoreList", ImmutableList.of("minecraft:water_bucket"),
+                "Item IDs to ignore during auto-gathering. Edit via the GUI button or click to open the list editor.")
+                .apply("playercontrolpp.config.baritone");
+
+        public static final ImmutableList<IConfigBase> OPTIONS = ImmutableList.of(
+                ENABLE_GLOBAL_IGNORE, GLOBAL_IGNORE_LIST);
+    }
+
     public static void loadFromFile() {
         Path configFile = FileUtils.getConfigDirectoryAsPath().resolve(CONFIG_FILE_NAME);
         if (Files.exists(configFile) && !Files.isDirectory(configFile)) {
@@ -66,6 +88,7 @@ public class Configs implements IConfigHandler {
             if (element != null && element.isJsonObject()) {
                 JsonObject root = element.getAsJsonObject();
                 ConfigUtils.readConfigBase(root, "Settings", Settings.OPTIONS);
+                ConfigUtils.readConfigBase(root, "BaritoneSettings", BaritoneSettings.OPTIONS);
                 ConfigUtils.readHotkeys(root, "Hotkeys", Hotkeys.HOTKEY_LIST);
             }
         }
@@ -82,6 +105,7 @@ public class Configs implements IConfigHandler {
         JsonObject root = new JsonObject();
         root.addProperty("configVersion", CONFIG_VERSION);
         ConfigUtils.writeConfigBase(root, "Settings", Settings.OPTIONS);
+        ConfigUtils.writeConfigBase(root, "BaritoneSettings", BaritoneSettings.OPTIONS);
         ConfigUtils.writeHotkeys(root, "Hotkeys", Hotkeys.HOTKEY_LIST);
         JsonUtils.writeJsonToFile(root, configFile.toFile());
     }

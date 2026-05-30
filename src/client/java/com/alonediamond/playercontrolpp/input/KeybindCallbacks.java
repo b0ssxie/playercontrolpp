@@ -1,6 +1,7 @@
 package com.alonediamond.playercontrolpp.input;
 
 import com.alonediamond.playercontrolpp.feature.AutoForwardFeature;
+import com.alonediamond.playercontrolpp.feature.AutoMaterialGatherer;
 import com.alonediamond.playercontrolpp.feature.QuickTurnFeature;
 import com.alonediamond.playercontrolpp.gui.PlayerControlppConfigGui;
 import com.alonediamond.playercontrolpp.record.InputRecorder;
@@ -17,6 +18,7 @@ import static com.alonediamond.playercontrolpp.config.Configs.Hotkeys.AUTO_FORWA
 import static com.alonediamond.playercontrolpp.config.Configs.Hotkeys.OPEN_CONFIG_GUI;
 import static com.alonediamond.playercontrolpp.config.Configs.Hotkeys.QUICK_TURN;
 import static com.alonediamond.playercontrolpp.config.Configs.Hotkeys.RECORDING_TOGGLE;
+import static com.alonediamond.playercontrolpp.config.Configs.Hotkeys.BARITONE_AUTO_GATHER;
 
 public class KeybindCallbacks {
 
@@ -25,6 +27,7 @@ public class KeybindCallbacks {
         AUTO_FORWARD.getKeybind().setCallback(new AutoForwardCallback());
         QUICK_TURN.getKeybind().setCallback(new QuickTurnCallback());
         RECORDING_TOGGLE.getKeybind().setCallback(new RecordingToggleCallback());
+        BARITONE_AUTO_GATHER.getKeybind().setCallback(new BaritoneAutoGatherCallback());
 
         // Register route hotkey callbacks
         for (RouteManager.RouteHotkey rh : RouteManager.getInstance().getRouteHotkeyList()) {
@@ -94,6 +97,17 @@ public class KeybindCallbacks {
                 rec.startRecording(StringUtils.translate("playercontrolpp.gui.recording.new_recording"), false);
                 client.setScreen(null); // exit all GUIs
             }
+            return true;
+        }
+    }
+
+    private static class BaritoneAutoGatherCallback implements IHotkeyCallback {
+        @Override
+        public boolean onKeyAction(KeyAction action, IKeybind key) {
+            if (action != KeyAction.PRESS) return false;
+            MinecraftClient client = MinecraftClient.getInstance();
+            if (client.player == null) return false;
+            AutoMaterialGatherer.getInstance().toggle();
             return true;
         }
     }

@@ -1,6 +1,8 @@
 package com.alonediamond.playercontrolpp.gui;
 
 import com.alonediamond.playercontrolpp.config.Configs;
+import com.alonediamond.playercontrolpp.feature.AutoMaterialGatherer;
+import fi.dy.masa.malilib.config.IConfigBase;
 import com.alonediamond.playercontrolpp.record.RecordingManager;
 import com.alonediamond.playercontrolpp.route.RouteManager;
 import fi.dy.masa.malilib.gui.GuiConfigsBase;
@@ -11,6 +13,8 @@ import fi.dy.masa.malilib.gui.button.IButtonActionListener;
 import fi.dy.masa.malilib.util.StringUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,6 +38,10 @@ public class PlayerControlppConfigGui extends GuiConfigsBase {
         int x = 10;
         int y = 26;
         for (ConfigGuiTab tab : ConfigGuiTab.values()) {
+            // Only show Baritone tab if all 3 mods are present
+            if (tab == ConfigGuiTab.BARITONE && !AutoMaterialGatherer.areAllThreeModsPresent()) {
+                continue;
+            }
             int width = getStringWidth(tab.getDisplayName()) + 10;
             ButtonGeneric button = new ButtonGeneric(x, y, width, 20, tab.getDisplayName());
             ButtonListener listener = new ButtonListener(tab, this);
@@ -52,6 +60,11 @@ public class PlayerControlppConfigGui extends GuiConfigsBase {
                         new ArrayList<>(RouteManager.getInstance().getRouteHotkeyList()));
             case SETTINGS:
                 return ConfigOptionWrapper.createFor(Configs.Settings.OPTIONS);
+            case BARITONE:
+                List<IConfigBase> baritoneOptions = new ArrayList<>();
+                baritoneOptions.add(Configs.Hotkeys.BARITONE_AUTO_GATHER);
+                baritoneOptions.addAll(Configs.BaritoneSettings.OPTIONS);
+                return ConfigOptionWrapper.createFor(baritoneOptions);
             case ROUTES:
                 return Collections.emptyList();
         }
@@ -59,8 +72,23 @@ public class PlayerControlppConfigGui extends GuiConfigsBase {
     }
 
     @Override
+    public void render(net.minecraft.client.gui.DrawContext drawContext, int mouseX, int mouseY, float delta) {
+        super.render(drawContext, mouseX, mouseY, delta);
+        // Show red warning text on Baritone tab
+        if (selectedTab == ConfigGuiTab.BARITONE && AutoMaterialGatherer.areAllThreeModsPresent()) {
+            String warning = StringUtils.translate("playercontrolpp.gui.baritone.warning");
+            int textWidth = textRenderer.getWidth(warning);
+            int x = (this.width - textWidth) / 2;
+            drawContext.drawTextWithShadow(textRenderer,
+                    Text.of(warning).copy().formatted(Formatting.RED),
+                    x, 5, 0xFFFF0000);
+        }
+    }
+
+    @Override
     protected boolean useKeybindSearch() {
-        return selectedTab == ConfigGuiTab.HOTKEYS || selectedTab == ConfigGuiTab.ROUTE_HOTKEYS;
+        return selectedTab == ConfigGuiTab.HOTKEYS || selectedTab == ConfigGuiTab.ROUTE_HOTKEYS
+                || selectedTab == ConfigGuiTab.BARITONE;
     }
 
     public enum ConfigGuiTab {
@@ -68,7 +96,8 @@ public class PlayerControlppConfigGui extends GuiConfigsBase {
         ROUTE_HOTKEYS("playercontrolpp.gui.tab.route_hotkeys"),
         SETTINGS("playercontrolpp.gui.tab.settings"),
         ROUTES("playercontrolpp.gui.tab.routes"),
-        RECORDING("playercontrolpp.gui.tab.recording");
+        RECORDING("playercontrolpp.gui.tab.recording"),
+        BARITONE("playercontrolpp.gui.tab.baritone");
 
         private final String translationKey;
 

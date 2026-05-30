@@ -34,6 +34,9 @@
     "malilib": ">=0.23.5"
   },
   "suggests": {
-    "modmenu": ">=13.0.3"
+    "modmenu": ">=13.0.3",
+    "baritone": "*",
+    "litematica": "*",
+    "chesttracker": "*"
   }
 }
