@@ -1,0 +1,298 @@
+﻿2026-06-15T20:33:25.4630932Z Current runner version: '2.335.1'
+2026-06-15T20:33:25.4647682Z ##[group]Runner Image Provisioner
+2026-06-15T20:33:25.4648271Z Hosted Compute Agent
+2026-06-15T20:33:25.4648607Z Version: 20260527.539
+2026-06-15T20:33:25.4649020Z Commit: a891dd388383b896fa6ac04a82c0b75cec981078
+2026-06-15T20:33:25.4649440Z Build Date: 2026-05-27T21:39:57Z
+2026-06-15T20:33:25.4649871Z Worker ID: {62814bd3-6caf-4896-ae4f-c96d0bf5f641}
+2026-06-15T20:33:25.4650349Z Azure Region: westus3
+2026-06-15T20:33:25.4650684Z ##[endgroup]
+2026-06-15T20:33:25.4651439Z ##[group]Operating System
+2026-06-15T20:33:25.4651785Z Ubuntu
+2026-06-15T20:33:25.4652083Z 24.04.4
+2026-06-15T20:33:25.4652437Z LTS
+2026-06-15T20:33:25.4652775Z ##[endgroup]
+2026-06-15T20:33:25.4653121Z ##[group]Runner Image
+2026-06-15T20:33:25.4653515Z Image: ubuntu-24.04
+2026-06-15T20:33:25.4654048Z Version: 20260607.184.1
+2026-06-15T20:33:25.4654849Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260607.184/images/ubuntu/Ubuntu2404-Readme.md
+2026-06-15T20:33:25.4655704Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260607.184
+2026-06-15T20:33:25.4656256Z ##[endgroup]
+2026-06-15T20:33:25.4656962Z ##[group]GITHUB_TOKEN Permissions
+2026-06-15T20:33:25.4658167Z Contents: read
+2026-06-15T20:33:25.4658794Z Metadata: read
+2026-06-15T20:33:25.4659170Z Packages: read
+2026-06-15T20:33:25.4659497Z ##[endgroup]
+2026-06-15T20:33:25.4660948Z Secret source: Actions
+2026-06-15T20:33:25.4661418Z Prepare workflow directory
+2026-06-15T20:33:25.4857218Z Prepare all required actions
+2026-06-15T20:33:25.4881677Z Getting action download info
+2026-06-15T20:33:25.8403890Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-06-15T20:33:26.7189769Z Download action repository 'gradle/actions@v4' (SHA:ed408507eac070d1f99cc633dbcf757c94c7933a)
+2026-06-15T20:33:28.4609850Z Download action repository 'actions/setup-java@v4' (SHA:c1e323688fd81a25caa38c78aa6df2d33d3e20d9)
+2026-06-15T20:33:29.4348018Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-06-15T20:33:29.9448229Z Complete job name: build
+2026-06-15T20:33:29.9862840Z ##[group]Run actions/checkout@v4
+2026-06-15T20:33:29.9863131Z with:
+2026-06-15T20:33:29.9863263Z   repository: b0ssxie/playercontrolpp
+2026-06-15T20:33:29.9865299Z   token: ***
+2026-06-15T20:33:29.9865422Z   ssh-strict: true
+2026-06-15T20:33:29.9865542Z   ssh-user: git
+2026-06-15T20:33:29.9865669Z   persist-credentials: true
+2026-06-15T20:33:29.9865806Z   clean: true
+2026-06-15T20:33:29.9865939Z   sparse-checkout-cone-mode: true
+2026-06-15T20:33:29.9866091Z   fetch-depth: 1
+2026-06-15T20:33:29.9866214Z   fetch-tags: false
+2026-06-15T20:33:29.9866347Z   show-progress: true
+2026-06-15T20:33:29.9866468Z   lfs: false
+2026-06-15T20:33:29.9866578Z   submodules: false
+2026-06-15T20:33:29.9866706Z   set-safe-directory: true
+2026-06-15T20:33:29.9866922Z ##[endgroup]
+2026-06-15T20:33:30.0567659Z Syncing repository: b0ssxie/playercontrolpp
+2026-06-15T20:33:30.0568699Z ##[group]Getting Git version info
+2026-06-15T20:33:30.0569113Z Working directory is '/home/runner/work/playercontrolpp/playercontrolpp'
+2026-06-15T20:33:30.0569576Z [command]/usr/bin/git version
+2026-06-15T20:33:30.2558723Z git version 2.54.0
+2026-06-15T20:33:30.2590186Z ##[endgroup]
+2026-06-15T20:33:30.2601247Z Temporarily overriding HOME='/home/runner/work/_temp/052a232c-6680-4951-b098-74dac4600f88' before making global git config changes
+2026-06-15T20:33:30.2613464Z Adding repository directory to the temporary git global config as a safe directory
+2026-06-15T20:33:30.2614440Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/playercontrolpp/playercontrolpp
+2026-06-15T20:33:30.2696582Z Deleting the contents of '/home/runner/work/playercontrolpp/playercontrolpp'
+2026-06-15T20:33:30.2697139Z ##[group]Initializing the repository
+2026-06-15T20:33:30.2697374Z [command]/usr/bin/git init /home/runner/work/playercontrolpp/playercontrolpp
+2026-06-15T20:33:30.2820673Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-06-15T20:33:30.2821195Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-06-15T20:33:30.2822623Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-06-15T20:33:30.2822962Z hint: call:
+2026-06-15T20:33:30.2824440Z hint:
+2026-06-15T20:33:30.2824688Z hint: 	git config --global init.defaultBranch <name>
+2026-06-15T20:33:30.2824968Z hint:
+2026-06-15T20:33:30.2826265Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-06-15T20:33:30.2826699Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-06-15T20:33:30.2828223Z hint:
+2026-06-15T20:33:30.2828407Z hint: 	git branch -m <name>
+2026-06-15T20:33:30.2828612Z hint:
+2026-06-15T20:33:30.2829875Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-06-15T20:33:30.2830392Z Initialized empty Git repository in /home/runner/work/playercontrolpp/playercontrolpp/.git/
+2026-06-15T20:33:30.2837234Z [command]/usr/bin/git remote add origin https://github.com/b0ssxie/playercontrolpp
+2026-06-15T20:33:30.2881939Z ##[endgroup]
+2026-06-15T20:33:30.2882193Z ##[group]Disabling automatic garbage collection
+2026-06-15T20:33:30.2882407Z [command]/usr/bin/git config --local gc.auto 0
+2026-06-15T20:33:30.2912244Z ##[endgroup]
+2026-06-15T20:33:30.2912465Z ##[group]Setting up auth
+2026-06-15T20:33:30.2916730Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-06-15T20:33:30.2939230Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-06-15T20:33:30.4328604Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-06-15T20:33:30.4355367Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-06-15T20:33:30.4540911Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-06-15T20:33:30.4561968Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-06-15T20:33:30.4737048Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-06-15T20:33:30.5175164Z ##[endgroup]
+2026-06-15T20:33:30.5179889Z ##[group]Fetching the repository
+2026-06-15T20:33:30.5180390Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +164412279dff862a2444d66b2bb26715053f53c9:refs/remotes/origin/master
+2026-06-15T20:33:31.2428212Z From https://github.com/b0ssxie/playercontrolpp
+2026-06-15T20:33:31.2428935Z  * [new ref]         164412279dff862a2444d66b2bb26715053f53c9 -> origin/master
+2026-06-15T20:33:31.2454111Z ##[endgroup]
+2026-06-15T20:33:31.2454351Z ##[group]Determining the checkout info
+2026-06-15T20:33:31.2456413Z ##[endgroup]
+2026-06-15T20:33:31.2461960Z [command]/usr/bin/git sparse-checkout disable
+2026-06-15T20:33:31.2505576Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-06-15T20:33:31.2527158Z ##[group]Checking out the ref
+2026-06-15T20:33:31.2530854Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+2026-06-15T20:33:31.2612995Z Reset branch 'master'
+2026-06-15T20:33:31.2615297Z branch 'master' set up to track 'origin/master'.
+2026-06-15T20:33:31.2621159Z ##[endgroup]
+2026-06-15T20:33:31.2650463Z [command]/usr/bin/git log -1 --format=%H
+2026-06-15T20:33:31.2668766Z 164412279dff862a2444d66b2bb26715053f53c9
+2026-06-15T20:33:31.2807166Z ##[group]Run gradle/actions/wrapper-validation@v4
+2026-06-15T20:33:31.2807357Z with:
+2026-06-15T20:33:31.2807477Z   min-wrapper-count: 1
+2026-06-15T20:33:31.2807614Z   allow-snapshots: false
+2026-06-15T20:33:31.2807873Z ##[endgroup]
+2026-06-15T20:33:31.4585320Z ✓ Found known Gradle Wrapper JAR files:
+2026-06-15T20:33:31.4585962Z   2db75c40782f5e8ba1fc278a5574bab070adccb2d21ca5a6e5ed840888448046 gradle/wrapper/gradle-wrapper.jar
+2026-06-15T20:33:31.4730387Z ##[group]Run actions/setup-java@v4
+2026-06-15T20:33:31.4730556Z with:
+2026-06-15T20:33:31.4730673Z   java-version: 21
+2026-06-15T20:33:31.4730793Z   distribution: temurin
+2026-06-15T20:33:31.4730925Z   java-package: jdk
+2026-06-15T20:33:31.4731054Z   check-latest: false
+2026-06-15T20:33:31.4731177Z   server-id: github
+2026-06-15T20:33:31.4731313Z   server-username: GITHUB_ACTOR
+2026-06-15T20:33:31.4731471Z   server-password: GITHUB_TOKEN
+2026-06-15T20:33:31.4731617Z   overwrite-settings: true
+2026-06-15T20:33:31.4731750Z   job-status: success
+2026-06-15T20:33:31.4733687Z   token: ***
+2026-06-15T20:33:31.4733853Z env:
+2026-06-15T20:33:31.4733992Z   GRADLE_ACTION_ID: gradle/actions/wrapper-validation
+2026-06-15T20:33:31.4734170Z ##[endgroup]
+2026-06-15T20:33:31.5949847Z ##[group]Installed distributions
+2026-06-15T20:33:31.6387766Z Resolved Java 21.0.11+10 from tool-cache
+2026-06-15T20:33:31.6388525Z Setting Java 21.0.11+10 as the default
+2026-06-15T20:33:31.6396610Z Creating toolchains.xml for JDK version 21 from temurin
+2026-06-15T20:33:31.6443998Z Writing to /home/runner/.m2/toolchains.xml
+2026-06-15T20:33:31.6444468Z 
+2026-06-15T20:33:31.6444569Z Java configuration:
+2026-06-15T20:33:31.6445631Z   Distribution: temurin
+2026-06-15T20:33:31.6445855Z   Version: 21.0.11+10
+2026-06-15T20:33:31.6446188Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.11-10/x64
+2026-06-15T20:33:31.6446431Z 
+2026-06-15T20:33:31.6446659Z ##[endgroup]
+2026-06-15T20:33:31.6463056Z Creating settings.xml with server-id: github
+2026-06-15T20:33:31.6463370Z Writing to /home/runner/.m2/settings.xml
+2026-06-15T20:33:31.6618375Z ##[group]Run gradle/actions/setup-gradle@v4
+2026-06-15T20:33:31.6618541Z with:
+2026-06-15T20:33:31.6618658Z   cache-disabled: false
+2026-06-15T20:33:31.6618802Z   cache-read-only: false
+2026-06-15T20:33:31.6618931Z   cache-write-only: false
+2026-06-15T20:33:31.6619066Z   cache-overwrite-existing: false
+2026-06-15T20:33:31.6619213Z   cache-cleanup: on-success
+2026-06-15T20:33:31.6619379Z   gradle-home-cache-includes: caches
+notifications
+
+2026-06-15T20:33:31.6619557Z   add-job-summary: always
+2026-06-15T20:33:31.6619697Z   add-job-summary-as-pr-comment: never
+2026-06-15T20:33:31.6619856Z   dependency-graph: disabled
+2026-06-15T20:33:31.6620026Z   dependency-graph-report-dir: dependency-graph-reports
+2026-06-15T20:33:31.6620224Z   dependency-graph-continue-on-failure: true
+2026-06-15T20:33:31.6620388Z   build-scan-publish: false
+2026-06-15T20:33:31.6620524Z   validate-wrappers: true
+2026-06-15T20:33:31.6620658Z   allow-snapshot-wrappers: false
+2026-06-15T20:33:31.6620835Z   gradle-home-cache-strict-match: false
+2026-06-15T20:33:31.6620994Z   workflow-job-context: null
+2026-06-15T20:33:31.6622771Z   github-token: ***
+2026-06-15T20:33:31.6622886Z env:
+2026-06-15T20:33:31.6623022Z   GRADLE_ACTION_ID: gradle/actions/wrapper-validation
+2026-06-15T20:33:31.6623332Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.11-10/x64
+2026-06-15T20:33:31.6623828Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.11-10/x64
+2026-06-15T20:33:31.6624035Z ##[endgroup]
+2026-06-15T20:33:33.0860519Z Merged default JDK locations into /home/runner/.m2/toolchains.xml
+2026-06-15T20:33:33.0861789Z Preparing cache for cleanup.
+2026-06-15T20:33:33.0864354Z ##[group]Restore Gradle state from cache
+2026-06-15T20:33:33.3340515Z Gradle User Home cache not found. Will initialize empty.
+2026-06-15T20:33:33.3342275Z ##[endgroup]
+2026-06-15T20:33:33.3531709Z ##[group]All Gradle Wrapper jars are valid
+2026-06-15T20:33:33.3532559Z ✓ Found known Gradle Wrapper JAR files:
+2026-06-15T20:33:33.3532893Z   2db75c40782f5e8ba1fc278a5574bab070adccb2d21ca5a6e5ed840888448046 gradle/wrapper/gradle-wrapper.jar
+2026-06-15T20:33:33.3533257Z ##[endgroup]
+2026-06-15T20:33:33.3731338Z ##[group]Run chmod +x ./gradlew
+2026-06-15T20:33:33.3731567Z [36;1mchmod +x ./gradlew[0m
+2026-06-15T20:33:33.4141868Z shell: /usr/bin/bash -e {0}
+2026-06-15T20:33:33.4142023Z env:
+2026-06-15T20:33:33.4142169Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+2026-06-15T20:33:33.4142400Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.11-10/x64
+2026-06-15T20:33:33.4142674Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.11-10/x64
+2026-06-15T20:33:33.4142896Z   GRADLE_USER_HOME: /home/runner/.gradle
+2026-06-15T20:33:33.4143061Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2026-06-15T20:33:33.4143227Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2026-06-15T20:33:33.4143468Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+2026-06-15T20:33:33.4143932Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+2026-06-15T20:33:33.4144109Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+2026-06-15T20:33:33.4144306Z ##[endgroup]
+2026-06-15T20:33:33.4234493Z ##[group]Run ./gradlew build
+2026-06-15T20:33:33.4234658Z [36;1m./gradlew build[0m
+2026-06-15T20:33:33.4258367Z shell: /usr/bin/bash -e {0}
+2026-06-15T20:33:33.4258500Z env:
+2026-06-15T20:33:33.4258631Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+2026-06-15T20:33:33.4258853Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.11-10/x64
+2026-06-15T20:33:33.4259125Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.11-10/x64
+2026-06-15T20:33:33.4259344Z   GRADLE_USER_HOME: /home/runner/.gradle
+2026-06-15T20:33:33.4259503Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2026-06-15T20:33:33.4259664Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2026-06-15T20:33:33.4259898Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+2026-06-15T20:33:33.4260154Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+2026-06-15T20:33:33.4260328Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+2026-06-15T20:33:33.4260475Z ##[endgroup]
+2026-06-15T20:33:34.1667472Z Downloading https://mirrors.cloud.tencent.com/gradle/gradle-9.2.1-bin.zip
+2026-06-15T20:33:38.7551295Z ............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%
+2026-06-15T20:33:39.6668784Z 
+2026-06-15T20:33:39.6694704Z Welcome to Gradle 9.2.1!
+2026-06-15T20:33:39.6694968Z 
+2026-06-15T20:33:39.6738022Z Here are the highlights of this release:
+2026-06-15T20:33:39.6754333Z  - Windows ARM support
+2026-06-15T20:33:39.6784247Z  - Improved publishing APIs
+2026-06-15T20:33:39.6814135Z  - Better guidance for dependency verification failures
+2026-06-15T20:33:39.6814602Z 
+2026-06-15T20:33:39.6834713Z For more details see https://docs.gradle.org/9.2.1/release-notes.html
+2026-06-15T20:33:39.6835077Z 
+2026-06-15T20:33:39.6835273Z Starting a Gradle Daemon (subsequent builds will be faster)
+2026-06-15T20:33:48.3651821Z 
+2026-06-15T20:33:48.3666625Z > Configure project :
+2026-06-15T20:33:48.3667138Z Fabric Loom: 1.15.5
+2026-06-15T20:34:03.2654634Z gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1781555622719.json
+2026-06-15T20:34:03.2658522Z 
+2026-06-15T20:34:03.2658804Z FAILURE: Build failed with an exception.
+2026-06-15T20:34:03.2659209Z 
+2026-06-15T20:34:03.2659427Z * What went wrong:
+2026-06-15T20:34:03.2659874Z A problem occurred configuring root project 'playercontrolpp'.
+2026-06-15T20:34:03.2660526Z > Failed to setup Minecraft, java.io.UncheckedIOException: Failed to compute checksum
+2026-06-15T20:34:03.2661004Z 
+2026-06-15T20:34:03.2661242Z * Try:
+2026-06-15T20:34:03.2661653Z > Run with --stacktrace option to get the stack trace.
+2026-06-15T20:34:03.2662159Z > Run with --info or --debug option to get more log output.
+2026-06-15T20:34:03.2662706Z > Run with --scan to generate a Build Scan (powered by Develocity).
+2026-06-15T20:34:03.2663237Z > Get more help at https://help.gradle.org.
+2026-06-15T20:34:03.2664904Z 
+2026-06-15T20:34:03.2665344Z BUILD FAILED in 29s
+2026-06-15T20:34:03.2687235Z 
+2026-06-15T20:34:03.2687880Z [Incubating] Problems report is available at: file:///home/runner/work/playercontrolpp/playercontrolpp/build/reports/problems/problems-report.html
+2026-06-15T20:34:03.2690032Z 
+2026-06-15T20:34:03.2690400Z Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+2026-06-15T20:34:03.2703223Z 
+2026-06-15T20:34:03.2703978Z You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+2026-06-15T20:34:03.2704597Z 
+2026-06-15T20:34:03.2705211Z For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+2026-06-15T20:34:03.7012204Z ##[error]Process completed with exit code 1.
+2026-06-15T20:34:03.7128506Z Post job cleanup.
+2026-06-15T20:34:03.8914719Z In post-action step
+2026-06-15T20:34:03.8920590Z ##[group]Stopping Gradle daemons
+2026-06-15T20:34:03.8921354Z Stopping Gradle daemons for /home/runner/.gradle/wrapper/dists/gradle-9.2.1-bin/9fgc9dy84duywbml6zqd0l4mo/gradle-9.2.1
+2026-06-15T20:34:03.8931771Z [command]/home/runner/.gradle/wrapper/dists/gradle-9.2.1-bin/9fgc9dy84duywbml6zqd0l4mo/gradle-9.2.1/bin/gradle --stop
+2026-06-15T20:34:04.2786577Z Stopping Daemon(s)
+2026-06-15T20:34:04.3094629Z 1 Daemon stopped
+2026-06-15T20:34:04.3171897Z ##[endgroup]
+2026-06-15T20:34:04.3172658Z Not performing cache-cleanup due to build failure
+2026-06-15T20:34:04.3173320Z ##[group]Caching Gradle state
+2026-06-15T20:34:04.3355780Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/playercontrolpp/playercontrolpp --files-from manifest.txt --use-compress-program zstdmt
+2026-06-15T20:34:04.4688800Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/playercontrolpp/playercontrolpp --files-from manifest.txt --use-compress-program zstdmt
+2026-06-15T20:34:04.4973321Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/playercontrolpp/playercontrolpp --files-from manifest.txt --use-compress-program zstdmt
+2026-06-15T20:34:04.6061365Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/playercontrolpp/playercontrolpp --files-from manifest.txt --use-compress-program zstdmt
+2026-06-15T20:34:04.6148041Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/playercontrolpp/playercontrolpp --files-from manifest.txt --use-compress-program zstdmt
+2026-06-15T20:34:05.2125112Z Sent 73841 of 73841 (100.0%), 0.2 MBs/sec
+2026-06-15T20:34:05.2759459Z Sent 111521 of 111521 (100.0%), 0.2 MBs/sec
+2026-06-15T20:34:05.4731125Z Saved cache entry with key gradle-instrumented-jars-v1-70269c17a39b69dfe5d672176cbfe9f2 from /home/runner/.gradle/caches/jars-*/*/ in 1027ms
+2026-06-15T20:34:05.5364070Z Saved cache entry with key gradle-groovy-dsl-v1-ba49d93ae6ca086d818d014e61d06c39 from /home/runner/.gradle/caches/*/groovy-dsl/*/ in 1074ms
+2026-06-15T20:34:05.8098426Z Sent 677252 of 134894980 (0.5%), 0.6 MBs/sec
+2026-06-15T20:34:05.8786074Z Sent 20316160 of 23824390 (85.3%), 19.4 MBs/sec
+2026-06-15T20:34:05.9617073Z Sent 11225006 of 11225006 (100.0%), 11.2 MBs/sec
+2026-06-15T20:34:06.1394443Z Sent 23824390 of 23824390 (100.0%), 18.0 MBs/sec
+2026-06-15T20:34:06.3008077Z Saved cache entry with key gradle-transforms-v1-fb6ec870da52cc34a3c2230086f856b2 from /home/runner/.gradle/caches/transforms-4/*/,/home/runner/.gradle/caches/*/transforms/*/ in 1729ms
+2026-06-15T20:34:06.3789418Z Saved cache entry with key gradle-dependencies-v1-7f3bab177074fb311e4dc1f06093d20b from /home/runner/.gradle/caches/modules-*/files-*/*/*/*/* in 1952ms
+2026-06-15T20:34:06.8104802Z Sent 67786116 of 134894980 (50.3%), 32.3 MBs/sec
+2026-06-15T20:34:06.8944567Z Sent 134894980 of 134894980 (100.0%), 61.7 MBs/sec
+2026-06-15T20:34:07.2861504Z Saved cache entry with key gradle-wrapper-zips-v1-084f0fb61b9b1e0ca499cf4eec20665d from /home/runner/.gradle/wrapper/dists/gradle-9.2.1-bin/9fgc9dy84duywbml6zqd0l4mo in 2960ms
+2026-06-15T20:34:07.3223943Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/playercontrolpp/playercontrolpp --files-from manifest.txt --use-compress-program zstdmt
+2026-06-15T20:34:08.8581962Z Sent 0 of 221377983 (0.0%), 0.0 MBs/sec
+2026-06-15T20:34:09.8578833Z Sent 87160255 of 221377983 (39.4%), 41.6 MBs/sec
+2026-06-15T20:34:10.1234840Z Sent 221377983 of 221377983 (100.0%), 93.2 MBs/sec
+2026-06-15T20:34:10.4101735Z Saved cache entry with key gradle-home-v1|Linux-X64|build[27df40b80d25f4e0c5be504ed712742e]-164412279dff862a2444d66b2bb26715053f53c9 from /home/runner/.gradle/caches,/home/runner/.gradle/notifications,/home/runner/.gradle/.setup-gradle in 3094ms
+2026-06-15T20:34:10.4102494Z ##[endgroup]
+2026-06-15T20:34:10.4107894Z Generating Job Summary
+2026-06-15T20:34:10.4116243Z Completed post-action step
+2026-06-15T20:34:10.4251734Z Post job cleanup.
+2026-06-15T20:34:10.5344477Z Post job cleanup.
+2026-06-15T20:34:10.5944786Z [command]/usr/bin/git version
+2026-06-15T20:34:10.5970216Z git version 2.54.0
+2026-06-15T20:34:10.5994366Z Temporarily overriding HOME='/home/runner/work/_temp/4cc90704-0675-4db7-a886-a0d4001164f9' before making global git config changes
+2026-06-15T20:34:10.5994792Z Adding repository directory to the temporary git global config as a safe directory
+2026-06-15T20:34:10.6003354Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/playercontrolpp/playercontrolpp
+2026-06-15T20:34:10.6028784Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-06-15T20:34:10.6051870Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-06-15T20:34:10.6227574Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-06-15T20:34:10.6244054Z http.https://github.com/.extraheader
+2026-06-15T20:34:10.6252320Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-06-15T20:34:10.6273235Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-06-15T20:34:10.6433467Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-06-15T20:34:10.6454680Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-06-15T20:34:10.7401005Z Cleaning up orphan processes
+2026-06-15T20:34:10.7637532Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/setup-java@v4, gradle/actions/setup-gradle@v4, gradle/actions/wrapper-validation@v4. Actions will be forced to run with Node.js 24 by default starting June 16th, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
